@@ -57,7 +57,7 @@ const VideoPlayer = ({ src, thumbnail, title, className, borderColor }) => {
 
   return (
     <div ref={containerRef} className="relative group">
-      <div className={`relative w-full h-48 rounded-2xl border-4 ${borderColor} group-hover:scale-105 transition-transform duration-500 shadow-2xl overflow-hidden ${className}`}>
+      <div className={`relative w-full h-40 md:h-48 rounded-xl border-2 ${borderColor} group-hover:scale-105 transition-transform duration-500 shadow-xl overflow-hidden ${className}`}>
         {/* Thumbnail */}
         {showThumbnail && (
           <div className="absolute inset-0 z-20">
@@ -66,13 +66,17 @@ const VideoPlayer = ({ src, thumbnail, title, className, borderColor }) => {
               alt={title}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+            <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
               <button 
                 onClick={handlePlay}
-                className="w-16 h-16 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors group"
+                className="w-12 h-12 md:w-16 md:h-16 bg-white/95 rounded-full flex items-center justify-center hover:bg-white transition-colors group shadow-lg"
               >
-                <Play className="w-8 h-8 text-black ml-1 group-hover:scale-110 transition-transform" />
+                <Play className="w-6 h-6 md:w-8 md:h-8 text-black ml-1 group-hover:scale-110 transition-transform" />
               </button>
+            </div>
+            {/* Simplified overlay text */}
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3">
+              <div className="text-white font-black text-lg md:text-xl text-center">{title}</div>
             </div>
           </div>
         )}
@@ -90,9 +94,6 @@ const VideoPlayer = ({ src, thumbnail, title, className, borderColor }) => {
             setShowThumbnail(true);
           }}
         />
-        
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
-        <div className="absolute bottom-4 left-4 text-white font-bold text-xl z-10">{title}</div>
       </div>
     </div>
   );
@@ -117,21 +118,21 @@ const Hero = () => {
       <div className="relative z-10 flex items-center justify-center min-h-screen px-4">
         <div className="text-center max-w-6xl mx-auto">
           {/* Main Headline */}
-          <div className="mb-12">
-            <h1 className="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-tight mb-8 drop-shadow-2xl">
+          <div className="mb-8 md:mb-12">
+            <h1 className="text-3xl md:text-7xl lg:text-8xl font-black text-white leading-tight mb-6 md:mb-8 drop-shadow-2xl">
               VOCÊ NÃO NASCEU
               <br />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-yellow-400 to-emerald-400 animate-pulse">
                 PRA SER SÓ MAIS UM
               </span>
             </h1>
-            <div className="text-2xl md:text-4xl text-emerald-400 font-black mb-12 drop-shadow-xl animate-pulse">
+            <div className="text-lg md:text-4xl text-emerald-400 font-black mb-8 md:mb-12 drop-shadow-xl animate-pulse px-2">
               VOCÊ NASCEU PRA SER LIVRE. PRA TER DINHEIRO. PRA VIVER GRANDE.
             </div>
           </div>
 
-          {/* Money videos showcase with custom thumbnails */}
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
+          {/* Money videos showcase with simplified thumbnails */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mb-8 md:mb-12 px-2">
             <VideoPlayer
               src="https://vidagold.fun/wp-content/uploads/2025/06/d7701178426db81b6b23e6f1f4a34c42.mp4"
               thumbnail="https://images.pexels.com/photos/164527/pexels-photo-164527.jpeg?auto=compress&cs=tinysrgb&w=400"
@@ -155,40 +156,44 @@ const Hero = () => {
           </div>
 
           {/* Subheadline */}
-          <div className="max-w-4xl mx-auto mb-16">
-            <p className="text-xl md:text-2xl text-gray-300 leading-relaxed mb-8">
+          <div className="max-w-4xl mx-auto mb-12 md:mb-16 px-4">
+            <p className="text-base md:text-2xl text-gray-300 leading-relaxed mb-6 md:mb-8">
               Quantas vezes você já foi dormir olhando pro teto…<br />
               Com aquela sensação de que a vida tá passando…<br />
               Que os dias tão iguais…<br />
               E que você tá ficando pra trás…
             </p>
-            <div className="text-3xl md:text-5xl font-black text-white drop-shadow-xl">
+            <div className="text-2xl md:text-5xl font-black text-white drop-shadow-xl">
               Hoje… Isso acaba.
             </div>
           </div>
 
-          {/* CTA Button */}
-          <a 
-            href="https://app.pushinpay.com.br/service/pay/9F3DBFAA-C3EC-447B-B3AE-FF779B2A7FE7"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group relative inline-flex bg-gradient-to-r from-emerald-500 via-yellow-500 to-emerald-500 hover:from-emerald-600 hover:via-yellow-600 hover:to-emerald-600 text-black text-xl md:text-2xl font-black py-8 px-16 rounded-full transition-all duration-500 transform hover:scale-110 animate-pulse hover:animate-none shadow-2xl hover:shadow-emerald-500/50"
-          >
-            <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-yellow-400 to-emerald-400 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
-            <div className="absolute -inset-4 bg-gradient-to-r from-emerald-500 via-yellow-500 to-emerald-500 rounded-full opacity-30 animate-ping"></div>
-            <div className="relative flex items-center gap-4">
-              <Zap className="w-8 h-8 animate-bounce" />
-              SIM! EU QUERO MUDAR DE VIDA AGORA!
-              <ArrowRight className="w-8 h-8 group-hover:translate-x-2 transition-transform" />
-            </div>
-          </a>
+          {/* CTA Button - Otimizado para mobile */}
+          <div className="px-4">
+            <a 
+              href="https://app.pushinpay.com.br/service/pay/9F3DBFAA-C3EC-447B-B3AE-FF779B2A7FE7"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group relative inline-flex bg-gradient-to-r from-emerald-500 via-yellow-500 to-emerald-500 hover:from-emerald-600 hover:via-yellow-600 hover:to-emerald-600 text-black text-base md:text-2xl font-black py-4 px-6 md:py-8 md:px-16 rounded-full transition-all duration-500 transform hover:scale-105 animate-pulse hover:animate-none shadow-2xl hover:shadow-emerald-500/50 w-full md:w-auto max-w-md md:max-w-none mx-auto"
+            >
+              <div className="absolute inset-0 bg-gradient-to-r from-emerald-400 via-yellow-400 to-emerald-400 rounded-full opacity-0 group-hover:opacity-30 transition-opacity duration-500"></div>
+              <div className="absolute -inset-2 md:-inset-4 bg-gradient-to-r from-emerald-500 via-yellow-500 to-emerald-500 rounded-full opacity-30 animate-ping"></div>
+              <div className="relative flex items-center justify-center gap-2 md:gap-4">
+                <Zap className="w-5 h-5 md:w-8 md:h-8 animate-bounce flex-shrink-0" />
+                <span className="text-center leading-tight">
+                  SIM! EU QUERO MUDAR DE VIDA AGORA!
+                </span>
+                <ArrowRight className="w-5 h-5 md:w-8 md:h-8 group-hover:translate-x-1 md:group-hover:translate-x-2 transition-transform flex-shrink-0" />
+              </div>
+            </a>
+          </div>
         </div>
       </div>
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2">
-        <div className="w-8 h-12 border-4 border-emerald-400 rounded-full flex justify-center animate-bounce">
-          <div className="w-2 h-4 bg-emerald-400 rounded-full mt-2 animate-pulse"></div>
+        <div className="w-6 h-10 md:w-8 md:h-12 border-2 md:border-4 border-emerald-400 rounded-full flex justify-center animate-bounce">
+          <div className="w-1 h-3 md:w-2 md:h-4 bg-emerald-400 rounded-full mt-1 md:mt-2 animate-pulse"></div>
         </div>
       </div>
     </section>
