@@ -80,50 +80,6 @@ const FinalCTA = () => {
             </div>
           </div>
 
-          {/* Success images showcase */}
-          <div className="grid grid-cols-3 md:grid-cols-5 gap-2 md:gap-4 mb-8 md:mb-12">
-            <div className="relative group">
-              <img 
-                src="https://images.pexels.com/photos/164527/pexels-photo-164527.jpeg?auto=compress&cs=tinysrgb&w=200" 
-                alt="Money" 
-                className="w-full h-16 md:h-24 object-cover rounded-xl border-2 border-emerald-500 group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl"></div>
-            </div>
-            <div className="relative group">
-              <img 
-                src="https://images.pexels.com/photos/1602726/pexels-photo-1602726.jpeg?auto=compress&cs=tinysrgb&w=200" 
-                alt="Freedom" 
-                className="w-full h-16 md:h-24 object-cover rounded-xl border-2 border-yellow-500 group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl"></div>
-            </div>
-            <div className="relative group">
-              <img 
-                src="https://images.pexels.com/photos/1166209/pexels-photo-1166209.jpeg?auto=compress&cs=tinysrgb&w=200" 
-                alt="Success" 
-                className="w-full h-16 md:h-24 object-cover rounded-xl border-2 border-emerald-500 group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl"></div>
-            </div>
-            <div className="relative group">
-              <img 
-                src="https://images.pexels.com/photos/259027/pexels-photo-259027.jpeg?auto=compress&cs=tinysrgb&w=200" 
-                alt="Wealth" 
-                className="w-full h-16 md:h-24 object-cover rounded-xl border-2 border-yellow-500 group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl"></div>
-            </div>
-            <div className="relative group">
-              <img 
-                src="https://encurtador.com.br/ODZbt" 
-                alt="Digital success" 
-                className="w-full h-16 md:h-24 object-cover rounded-xl border-2 border-emerald-500 group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-xl"></div>
-            </div>
-          </div>
-
           <div className="text-center">
             <div className="text-sm md:text-lg text-gray-500 mb-4 md:mb-6 font-bold">
               ⚡ Acesso liberado em segundos • 🔒 Compra 100% segura • 💎 Garantia total

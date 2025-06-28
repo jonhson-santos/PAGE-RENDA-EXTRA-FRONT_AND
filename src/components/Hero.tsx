@@ -57,7 +57,7 @@ const VideoPlayer = ({ src, thumbnail, title, className, borderColor }) => {
 
   return (
     <div ref={containerRef} className="relative group">
-      <div className={`relative w-full h-40 md:h-48 rounded-xl border-2 ${borderColor} group-hover:scale-105 transition-transform duration-500 shadow-xl overflow-hidden ${className}`}>
+      <div className={`relative w-full h-40 md:h-48 rounded-2xl border-4 ${borderColor} group-hover:scale-105 transition-transform duration-500 shadow-2xl overflow-hidden ${className}`}>
         {/* Thumbnail */}
         {showThumbnail && (
           <div className="absolute inset-0 z-20">
@@ -66,17 +66,13 @@ const VideoPlayer = ({ src, thumbnail, title, className, borderColor }) => {
               alt={title}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-black/50 flex items-center justify-center">
+            <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
               <button 
                 onClick={handlePlay}
-                className="w-12 h-12 md:w-16 md:h-16 bg-white/95 rounded-full flex items-center justify-center hover:bg-white transition-colors group shadow-lg"
+                className="w-12 h-12 md:w-16 md:h-16 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors group"
               >
                 <Play className="w-6 h-6 md:w-8 md:h-8 text-black ml-1 group-hover:scale-110 transition-transform" />
               </button>
-            </div>
-            {/* Simplified overlay text */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-3">
-              <div className="text-white font-black text-lg md:text-xl text-center">{title}</div>
             </div>
           </div>
         )}
@@ -94,6 +90,9 @@ const VideoPlayer = ({ src, thumbnail, title, className, borderColor }) => {
             setShowThumbnail(true);
           }}
         />
+        
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
+        <div className="absolute bottom-4 left-4 text-white font-bold text-lg md:text-xl z-10">{title}</div>
       </div>
     </div>
   );
@@ -131,7 +130,7 @@ const Hero = () => {
             </div>
           </div>
 
-          {/* Money videos showcase with simplified thumbnails */}
+          {/* Money videos showcase with original thumbnails */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mb-8 md:mb-12 px-2">
             <VideoPlayer
               src="https://vidagold.fun/wp-content/uploads/2025/06/d7701178426db81b6b23e6f1f4a34c42.mp4"

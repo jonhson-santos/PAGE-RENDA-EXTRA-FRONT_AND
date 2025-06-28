@@ -102,46 +102,6 @@ const OfferSection = () => {
               </div>
             </div>
           </div>
-
-          {/* Additional money images showcase */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
-            <div className="relative group">
-              <img 
-                src="https://images.pexels.com/photos/164527/pexels-photo-164527.jpeg?auto=compress&cs=tinysrgb&w=300" 
-                alt="Money 1" 
-                className="w-full h-24 md:h-32 object-cover rounded-2xl border-2 border-emerald-500 group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-2xl"></div>
-              <div className="absolute bottom-2 left-2 text-white font-bold">💰</div>
-            </div>
-            <div className="relative group">
-              <img 
-                src="https://images.pexels.com/photos/259027/pexels-photo-259027.jpeg?auto=compress&cs=tinysrgb&w=300" 
-                alt="Money 2" 
-                className="w-full h-24 md:h-32 object-cover rounded-2xl border-2 border-yellow-500 group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-2xl"></div>
-              <div className="absolute bottom-2 left-2 text-white font-bold">💵</div>
-            </div>
-            <div className="relative group">
-              <img 
-                src="https://images.pexels.com/photos/1602726/pexels-photo-1602726.jpeg?auto=compress&cs=tinysrgb&w=300" 
-                alt="Freedom" 
-                className="w-full h-24 md:h-32 object-cover rounded-2xl border-2 border-emerald-500 group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-2xl"></div>
-              <div className="absolute bottom-2 left-2 text-white font-bold">🏖️</div>
-            </div>
-            <div className="relative group">
-              <img 
-                src="https://encurtador.com.br/ODZbt" 
-                alt="Success" 
-                className="w-full h-24 md:h-32 object-cover rounded-2xl border-2 border-yellow-500 group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent rounded-2xl"></div>
-              <div className="absolute bottom-2 left-2 text-white font-bold">🚀</div>
-            </div>
-          </div>
         </div>
       </div>
     </section>
