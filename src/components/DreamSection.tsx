@@ -94,8 +94,8 @@ const DreamSection = () => {
                   <div className="text-center group">
                     <div className="relative mb-6">
                       <img 
-                        src="https://images.pexels.com/photos/3943726/pexels-photo-3943726.jpeg?auto=compress&cs=tinysrgb&w=300" 
-                        alt="Smartphone" 
+                        src="https://images.pexels.com/photos/607812/pexels-photo-607812.jpeg?auto=compress&cs=tinysrgb&w=300" 
+                        alt="Pessoa usando celular" 
                         className="w-20 h-20 object-cover rounded-full mx-auto border-4 border-emerald-500 group-hover:scale-110 transition-transform duration-500"
                       />
                       <div className="absolute -top-2 -right-2 text-2xl animate-bounce">✅</div>
@@ -106,8 +106,8 @@ const DreamSection = () => {
                   <div className="text-center group">
                     <div className="relative mb-6">
                       <img 
-                        src="https://images.pexels.com/photos/3184360/pexels-photo-3184360.jpeg?auto=compress&cs=tinysrgb&w=300" 
-                        alt="No followers needed" 
+                        src="https://images.pexels.com/photos/1181467/pexels-photo-1181467.jpeg?auto=compress&cs=tinysrgb&w=300" 
+                        alt="Pessoa comum trabalhando" 
                         className="w-20 h-20 object-cover rounded-full mx-auto border-4 border-emerald-500 group-hover:scale-110 transition-transform duration-500"
                       />
                       <div className="absolute -top-2 -right-2 text-2xl animate-bounce">✅</div>
@@ -119,7 +119,7 @@ const DreamSection = () => {
                     <div className="relative mb-6">
                       <img 
                         src="https://images.pexels.com/photos/3184291/pexels-photo-3184291.jpeg?auto=compress&cs=tinysrgb&w=300" 
-                        alt="No expertise needed" 
+                        alt="Pessoa aprendendo no computador" 
                         className="w-20 h-20 object-cover rounded-full mx-auto border-4 border-emerald-500 group-hover:scale-110 transition-transform duration-500"
                       />
                       <div className="absolute -top-2 -right-2 text-2xl animate-bounce">✅</div>
@@ -130,8 +130,8 @@ const DreamSection = () => {
                   <div className="text-center group">
                     <div className="relative mb-6">
                       <img 
-                        src="https://images.pexels.com/photos/3184292/pexels-photo-3184292.jpeg?auto=compress&cs=tinysrgb&w=300" 
-                        alt="No investment needed" 
+                        src="https://images.pexels.com/photos/3943716/pexels-photo-3943716.jpeg?auto=compress&cs=tinysrgb&w=300" 
+                        alt="Moedas e dinheiro pequeno investimento" 
                         className="w-20 h-20 object-cover rounded-full mx-auto border-4 border-emerald-500 group-hover:scale-110 transition-transform duration-500"
                       />
                       <div className="absolute -top-2 -right-2 text-2xl animate-bounce">✅</div>
