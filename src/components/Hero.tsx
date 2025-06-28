@@ -13,36 +13,51 @@ const VideoPlayer = ({ src, thumbnail, title, className, borderColor }) => {
     
     if (!video || !container) return;
 
+    // Set video to loop
+    video.loop = true;
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
+          if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
             // Video is in view, play it
-            if (window.innerWidth <= 768) { // Mobile only
-              video.play().then(() => {
-                setIsPlaying(true);
-                setShowThumbnail(false);
-              }).catch(() => {
-                // Autoplay failed, keep thumbnail
-              });
-            }
+            video.play().then(() => {
+              setIsPlaying(true);
+              setShowThumbnail(false);
+            }).catch(() => {
+              // Autoplay failed, keep thumbnail
+            });
           } else {
             // Video is out of view, pause and show thumbnail
-            if (window.innerWidth <= 768) { // Mobile only
-              video.pause();
-              setIsPlaying(false);
-              setShowThumbnail(true);
-            }
+            video.pause();
+            setIsPlaying(false);
+            setShowThumbnail(true);
           }
         });
       },
-      { threshold: 0.5 }
+      { threshold: 0.3 }
     );
 
     observer.observe(container);
 
+    // Also listen to scroll events to pause videos when user scrolls down significantly
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY;
+      const windowHeight = window.innerHeight;
+      
+      // If user scrolled more than 1.5 screen heights, pause all videos
+      if (scrollPosition > windowHeight * 1.5) {
+        video.pause();
+        setIsPlaying(false);
+        setShowThumbnail(true);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
     return () => {
       observer.disconnect();
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
 
@@ -85,10 +100,7 @@ const VideoPlayer = ({ src, thumbnail, title, className, borderColor }) => {
           muted
           playsInline
           preload="metadata"
-          onEnded={() => {
-            setIsPlaying(false);
-            setShowThumbnail(true);
-          }}
+          loop
         />
         
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent"></div>
