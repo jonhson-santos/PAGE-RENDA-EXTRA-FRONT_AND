@@ -182,7 +182,7 @@ const Hero = () => {
           {/* CTA Button - Otimizado para mobile */}
           <div className="px-4">
             <a 
-              href="https://renda-27.vercel.app/"
+              href="https://app.pushinpay.com.br/service/pay/9F3DBFAA-C3EC-447B-B3AE-FF779B2A7FE7"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative inline-flex bg-gradient-to-r from-emerald-500 via-yellow-500 to-emerald-500 hover:from-emerald-600 hover:via-yellow-600 hover:to-emerald-600 text-black text-base md:text-2xl font-black py-4 px-6 md:py-8 md:px-16 rounded-full transition-all duration-500 transform hover:scale-105 animate-pulse hover:animate-none shadow-2xl hover:shadow-emerald-500/50 w-full md:w-auto max-w-md md:max-w-none mx-auto"
