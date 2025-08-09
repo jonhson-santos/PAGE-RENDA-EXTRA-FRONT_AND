@@ -80,7 +80,7 @@ const OfferSection = () => {
 
               <div className="px-4">
                 <a 
-                  href="https://app.pushinpay.com.br/service/pay/9F3DBFAA-C3EC-447B-B3AE-FF779B2A7FE7"
+                  href="https://pay.kiwify.com.br/qmLSEgs"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group relative inline-flex bg-gradient-to-r from-emerald-500 via-yellow-500 to-emerald-500 hover:from-emerald-600 hover:via-yellow-600 hover:to-emerald-600 text-black text-base md:text-3xl font-black py-4 px-6 md:py-10 md:px-20 rounded-full transition-all duration-500 transform hover:scale-105 shadow-2xl hover:shadow-emerald-500/50 animate-pulse hover:animate-none w-full md:w-auto max-w-md md:max-w-none mx-auto"
