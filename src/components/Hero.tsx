@@ -1,78 +1,113 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { ArrowRight, Zap, Play } from 'lucide-react';
 
-const VideoPlayer = ({ src, thumbnail, title, className, borderColor }) => {
+const VideoPlayer = ({ src, thumbnail, title, className = "", borderColor }) => {
   const videoRef = useRef(null);
   const containerRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [showThumbnail, setShowThumbnail] = useState(true);
+  const [hasUserInteracted, setHasUserInteracted] = useState(false);
 
   useEffect(() => {
     const video = videoRef.current;
-    const container = containerRef.current;
     
-    if (!video || !container) return;
+    if (!video) return;
 
-    // Set video to loop
+    // Configure video
     video.loop = true;
+    video.muted = true;
+    video.playsInline = true;
+    
+    // Try to load video metadata
+    video.load();
+    
+    // Handle video events
+    const handleCanPlay = () => {
+      if (hasUserInteracted) {
+        video.play().then(() => {
+          setIsPlaying(true);
+          setShowThumbnail(false);
+        }).catch((error) => {
+          console.log('Autoplay failed:', error);
+        });
+      }
+    };
+    
+    const handlePlay = () => {
+      setIsPlaying(true);
+      setShowThumbnail(false);
+    };
+    
+    const handlePause = () => {
+      setIsPlaying(false);
+      setShowThumbnail(true);
+    };
+    
+    video.addEventListener('canplay', handleCanPlay);
+    video.addEventListener('play', handlePlay);
+    video.addEventListener('pause', handlePause);
 
+    // Intersection Observer for auto-play when in view
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
-            // Video is in view, play it
-            video.play().then(() => {
-              setIsPlaying(true);
-              setShowThumbnail(false);
-            }).catch(() => {
-              // Autoplay failed, keep thumbnail
-            });
+          if (entry.isIntersecting && entry.intersectionRatio > 0.5 && hasUserInteracted) {
+            if (video.readyState >= 3) { // HAVE_FUTURE_DATA
+              video.play().catch(() => {
+                // Autoplay failed, keep thumbnail
+              });
+            }
           } else {
-            // Video is out of view, pause and show thumbnail
             video.pause();
-            setIsPlaying(false);
-            setShowThumbnail(true);
           }
         });
       },
-      { threshold: 0.3 }
+      { threshold: 0.5 }
     );
 
-    observer.observe(container);
-
-    // Also listen to scroll events to pause videos when user scrolls down significantly
-    const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const windowHeight = window.innerHeight;
-      
-      // If user scrolled more than 1.5 screen heights, pause all videos
-      if (scrollPosition > windowHeight * 1.5) {
-        video.pause();
-        setIsPlaying(false);
-        setShowThumbnail(true);
-      }
-    };
-
-    window.addEventListener('scroll', handleScroll);
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
 
     return () => {
+      video.removeEventListener('canplay', handleCanPlay);
+      video.removeEventListener('play', handlePlay);
+      video.removeEventListener('pause', handlePause);
       observer.disconnect();
-      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [hasUserInteracted]);
+
+  // Enable user interaction on first click anywhere on the page
+  useEffect(() => {
+    const enableInteraction = () => {
+      setHasUserInteracted(true);
+    };
+
+    document.addEventListener('click', enableInteraction, { once: true });
+    document.addEventListener('touchstart', enableInteraction, { once: true });
+
+    return () => {
+      document.removeEventListener('click', enableInteraction);
+      document.removeEventListener('touchstart', enableInteraction);
     };
   }, []);
 
-  const handlePlay = () => {
+  const handlePlayClick = () => {
     const video = videoRef.current;
     if (video) {
-      video.play();
-      setIsPlaying(true);
-      setShowThumbnail(false);
+      setHasUserInteracted(true);
+      video.play().then(() => {
+        setIsPlaying(true);
+        setShowThumbnail(false);
+      }).catch((error) => {
+        console.log('Play failed:', error);
+      });
     }
   };
 
   return (
     <div ref={containerRef} className="relative group">
-      <div className={`relative w-full h-40 md:h-48 rounded-2xl border-4 ${borderColor} group-hover:scale-105 transition-transform duration-500 shadow-2xl overflow-hidden ${className}`}>
+      <div className={`relative w-full h-40 md:h-48 rounded-2xl border-4 ${borderColor} group-hover:scale-105 transition-transform duration-500 shadow-2xl overflow-hidden`}>
         {/* Thumbnail */}
         {showThumbnail && (
           <div className="absolute inset-0 z-20">
@@ -83,7 +118,7 @@ const VideoPlayer = ({ src, thumbnail, title, className, borderColor }) => {
             />
             <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
               <button 
-                onClick={handlePlay}
+                onClick={handlePlayClick}
                 className="w-12 h-12 md:w-16 md:h-16 bg-white/90 rounded-full flex items-center justify-center hover:bg-white transition-colors group"
               >
                 <Play className="w-6 h-6 md:w-8 md:h-8 text-black ml-1 group-hover:scale-110 transition-transform" />
@@ -99,7 +134,7 @@ const VideoPlayer = ({ src, thumbnail, title, className, borderColor }) => {
           className="w-full h-full object-cover"
           muted
           playsInline
-          preload="metadata"
+          preload="auto"
           loop
         />
         
@@ -146,7 +181,6 @@ const Hero = () => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-8 mb-8 md:mb-12 px-2">
             <VideoPlayer
               src="https://vidagold.fun/wp-content/uploads/2025/06/d7701178426db81b6b23e6f1f4a34c42.mp4"
-              thumbnail="https://images.pexels.com/photos/164527/pexels-photo-164527.jpeg?auto=compress&cs=tinysrgb&w=400"
               title="💰 SUA GRANA"
               borderColor="border-emerald-500"
             />
@@ -154,7 +188,6 @@ const Hero = () => {
             <VideoPlayer
               src="https://vidagold.fun/wp-content/uploads/2025/06/7e46d69c3d25d73f83391b6c31ee5bf3-Copia.mp4"
               thumbnail="https://images.pexels.com/photos/1602726/pexels-photo-1602726.jpeg?auto=compress&cs=tinysrgb&w=400"
-              title="🏖️ SUA LIBERDADE"
               borderColor="border-yellow-500"
             />
             
@@ -162,7 +195,6 @@ const Hero = () => {
               src="https://vidagold.fun/wp-content/uploads/2025/06/dotsave_app_08d0ba01b46bc9a44b6a324c852dd1fb.mp4"
               thumbnail="https://images.pexels.com/photos/1166209/pexels-photo-1166209.jpeg?auto=compress&cs=tinysrgb&w=400"
               title="🚀 SEU SUCESSO"
-              borderColor="border-emerald-500"
             />
           </div>
 
