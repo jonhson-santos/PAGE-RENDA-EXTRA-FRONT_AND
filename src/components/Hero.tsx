@@ -188,6 +188,7 @@ const Hero = () => {
             <VideoPlayer
               src="https://vidagold.fun/wp-content/uploads/2025/06/7e46d69c3d25d73f83391b6c31ee5bf3-Copia.mp4"
               thumbnail="https://images.pexels.com/photos/1602726/pexels-photo-1602726.jpeg?auto=compress&cs=tinysrgb&w=400"
+             title="💎 SUA LIBERDADE"
               borderColor="border-yellow-500"
             />
             
