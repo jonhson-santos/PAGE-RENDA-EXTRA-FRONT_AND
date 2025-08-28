@@ -164,14 +164,14 @@ const Hero = () => {
           {/* Money videos showcase with original thumbnails */}
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4 md:gap-6 lg:gap-8 mb-6 md:mb-12 px-2">
             <VideoPlayer
-              src="https://vidagold.fun/wp-content/uploads/2025/06/d7701178426db81b6b23e6f1f4a34c42.mp4"
+              src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4"
               thumbnail="https://images.pexels.com/photos/3943720/pexels-photo-3943720.jpeg?auto=compress&cs=tinysrgb&w=400"
               title="💰 SUA GRANA"
               borderColor="border-emerald-500"
             />
             
             <VideoPlayer
-              src="https://vidagold.fun/wp-content/uploads/2025/06/7e46d69c3d25d73f83391b6c31ee5bf3-Copia.mp4"
+              src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ElephantsDream.mp4"
               thumbnail="https://images.pexels.com/photos/1602726/pexels-photo-1602726.jpeg?auto=compress&cs=tinysrgb&w=400"
               title="💎 SUA LIBERDADE"
               borderColor="border-yellow-500"
@@ -179,7 +179,7 @@ const Hero = () => {
             
             <div className="sm:col-span-2 md:col-span-1">
               <VideoPlayer
-              src="https://vidagold.fun/wp-content/uploads/2025/06/dotsave_app_08d0ba01b46bc9a44b6a324c852dd1fb.mp4"
+              src="https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/ForBiggerBlazes.mp4"
               thumbnail="https://images.pexels.com/photos/1166209/pexels-photo-1166209.jpeg?auto=compress&cs=tinysrgb&w=400"
               title="🚀 SEU SUCESSO"
                 borderColor="border-emerald-500"
