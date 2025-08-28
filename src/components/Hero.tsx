@@ -203,7 +203,7 @@ const Hero = () => {
           {/* CTA Button - Otimizado para mobile */}
           <div className="px-4">
             <a 
-              href="https://pay.kiwify.com.br/qmLSEgs"
+              href="https://app.pushinpay.com.br/service/pay/9F3DBFAA-C3EC-447B-B3AE-FF779B2A7FE7"
               target="_blank"
               rel="noopener noreferrer"
               className="group relative inline-flex bg-gradient-to-r from-emerald-500 via-yellow-500 to-emerald-500 hover:from-emerald-600 hover:via-yellow-600 hover:to-emerald-600 text-black text-sm sm:text-base md:text-xl lg:text-2xl font-black py-3 px-4 sm:py-4 sm:px-6 md:py-6 md:px-12 lg:py-8 lg:px-16 rounded-full transition-all duration-500 transform hover:scale-105 animate-pulse hover:animate-none shadow-2xl hover:shadow-emerald-500/50 w-full sm:w-auto max-w-sm sm:max-w-md md:max-w-none mx-auto"
